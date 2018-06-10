@@ -28,7 +28,7 @@ def update_executions(lines, failed, line_executions=LINE_EXECUTIONS):
 
 
 PRIOR = ExecutionCounts(
-    positive_cases=1,
+    positive_cases=3,
     negative_cases=0
 )
 
@@ -36,7 +36,7 @@ PRIOR = ExecutionCounts(
 def calc_scores(line_executions=LINE_EXECUTIONS, prior=PRIOR):
     """Return 'fault' score for each line, given prior and observations."""
     return {
-        line: (
+        line: float(
             execution_counts.negative_cases + prior.negative_cases
         ) / (
             execution_counts.positive_cases + prior.positive_cases
