@@ -12,20 +12,23 @@ OutputLine = collections.namedtuple(
 )
 
 
-# TODO - REWRITE:
-# Default color levels for the color cube
-cubelevels = [0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff]
-# Generate a list of midpoints of the above list
-snaps = [(x+y)/2 for x, y in list(zip(cubelevels, [0]+cubelevels))[1:]]
+CUBE_LEVELS = (0x00, 0x5f, 0x87, 0xaf, 0xd7, 0xff,)
+SNAP_POINTS = tuple(
+    (lower + upper) / 2
+    for lower, upper in
+    zip(CUBE_LEVELS, CUBE_LEVELS[1:])
+)
 
-def rgb2short(r, g, b):
-    """ Converts RGB values to the nearest equivalent xterm-256 color.
-    """
-    # Using list of snap points, convert RGB value to cube indexes
-    r, g, b = map(lambda x: len(tuple(s for s in snaps if s<x)), (r, g, b))
-    # Simple colorcube transform
-    return r*36 + g*6 + b + 16
-# TODO END
+
+def rgb_to_hex(*channels):
+    r, g, b = (
+        sum(
+            snap_point < channel
+            for snap_point in enumerate(SNAP_POINTS)
+        )
+        for channel in channels
+    )
+    return r * 36 + g * 6 + b + 16
 
 
 def generate_output(line_scores, line_context=LINE_CONTEXT):
@@ -62,7 +65,7 @@ def generate_output(line_scores, line_context=LINE_CONTEXT):
         # todo: right-justify the numeric score value (rather than tab)
         yield '{line.num}\t\x1b[48;5;{ansi_tag}m{line.content}\033[0m\t{line.score}'.format(
             line=line,
-            ansi_tag=rgb2short(
+            ansi_tag=rgb_to_hex(
                 int(
                     (line.score - min_score) / (max_score - min_score) * 255
                 ), 0, 0
