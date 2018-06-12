@@ -5,6 +5,8 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fault-localization.svg) 
 [![Liberapay receiving](https://img.shields.io/liberapay/receives/hchasestevens.svg)](https://liberapay.com/hchasestevens/)
 
+<img src="demo.gif" width="642">
+
 ## What is this good for?
 
 Not all failing code raises exceptions; behavioral bugs can be the hardest to diagnose. 
