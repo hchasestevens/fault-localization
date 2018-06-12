@@ -8,7 +8,7 @@
 ## What is this good for?
 
 Not all failing code raises exceptions; behavioral bugs can be the hardest to diagnose. 
-`fault-localization` is a pytest plugin that helps you identify and isolate the lines of code most
+`fault-localization` is a [pytest](https://docs.pytest.org/en/latest/) plugin that helps you identify and isolate the lines of code most
 likely to be causing test failure, using the simple rule-of-thumb that the most suspicious code is the
 code run most often in failing tests.
 
@@ -28,7 +28,7 @@ pytest --localize {dir} [pytest args]
 
 will highlight suspicious lines encountered within `dir` while running the test configuration specified.
 If you suspect multiple sources of failure, or if there are multiple tests within your suite that 
-exercise the area of code you're interested in, using pytest's `-k` flag is useful for running 
+exercise the area of code you're interested in, using [pytest's `-k` flag](https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests) is useful for running 
 fault localization on only a subset of your suite.
 
 ## Contacts
