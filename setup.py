@@ -4,7 +4,7 @@ setup(
     name='fault-localization',
     packages=['fault_localization'],
     platforms='any',
-    version='0.0.1',
+    version='0.1.0',
     description='A fault localization tool for Python\'s pytest testing framework.',
     author='H. Chase Stevens',
     author_email='chase@chasestevens.com',
