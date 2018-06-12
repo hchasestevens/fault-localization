@@ -57,6 +57,3 @@ def pytest_terminal_summary(terminalreporter):
     }
     for line in generate_output(line_scores):
         terminalreporter.write_line(line)
-
-
-

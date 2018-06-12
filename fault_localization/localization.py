@@ -28,7 +28,7 @@ def update_executions(lines, failed, line_executions=LINE_EXECUTIONS):
 
 
 PRIOR = ExecutionCounts(
-    positive_cases=3,
+    positive_cases=1,
     negative_cases=0
 )
 
