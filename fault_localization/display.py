@@ -24,7 +24,7 @@ def rgb_to_hex(*channels):
     r, g, b = (
         sum(
             snap_point < channel
-            for snap_point in enumerate(SNAP_POINTS)
+            for snap_point in SNAP_POINTS
         )
         for channel in channels
     )
