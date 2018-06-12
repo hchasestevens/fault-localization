@@ -4,7 +4,7 @@ setup(
     name='fault-localization',
     packages=['fault_localization'],
     platforms='any',
-    version='0.1.0',
+    version='0.1.2',
     description='A fault localization tool for Python\'s pytest testing framework.',
     author='H. Chase Stevens',
     author_email='chase@chasestevens.com',
@@ -13,6 +13,11 @@ setup(
     install_requires=[
         'pytest>=3.1.2',
     ],
+    entry_points={
+        'pytest11': [
+            'fault-localization = fault_localization.plugin',
+        ]
+    },
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
