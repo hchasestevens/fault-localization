@@ -33,7 +33,12 @@ def rgb_to_hex(*channels):
 
 def generate_output(line_scores, line_context=LINE_CONTEXT):
     """Given line scores, create final localization output."""
-    fname, line_no = max(line_scores, key=line_scores.get)
+    try:
+        fname, line_no = max(line_scores, key=line_scores.get)
+    except ValueError:
+        yield "No lines from specified directory captured during test suite execution."
+        return
+
     max_score = line_scores[fname, line_no]
     min_score = min(line_scores.values())
 
