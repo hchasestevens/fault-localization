@@ -1,7 +1,8 @@
 # fault-localization
 
 [![Build Status](https://travis-ci.org/hchasestevens/fault-localization.svg?branch=master)](https://travis-ci.org/hchasestevens/fault-localization)
-[![PyPI version](https://badge.fury.io/py/fault-localization.svg)](https://badge.fury.io/py/fault-localization)
+[![PyPI version](https://badge.fury.io/py/fault-localization.svg)](https://pypi.org/project/fault-localization)
+[![conda-forge version](https://img.shields.io/conda/vn/conda-forge/fault-localization.svg)](https://anaconda.org/conda-forge/fault-localization)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/fault-localization.svg) 
 
 <img src="demo.gif" width="642">
