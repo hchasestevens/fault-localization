@@ -11,16 +11,20 @@ from fault_localization.display import generate_output
 
 
 LOCALIZATION_DIR = None
+N_LINES = 1
 
 
 def pytest_addoption(parser):
     group = parser.getgroup('fault-localization', 'fault localization')
     group.addoption('--localize', help="directory in which to localize faults")
+    group.addoption('--n-top-lines', type=int, default=1, help="number of top-ranking lines to display")
 
 
 def pytest_configure(config):
     global LOCALIZATION_DIR
+    global N_LINES
     LOCALIZATION_DIR = config.getoption('--localize')
+    N_LINES = config.getoption('--n-top-lines')
 
 
 @pytest.hookimpl(hookwrapper=True)
@@ -55,5 +59,5 @@ def pytest_terminal_summary(terminalreporter):
         for (path, line), score in calc_scores().items()
         if path.startswith(abs_localization_dir)
     }
-    for line in generate_output(line_scores):
+    for line in generate_output(line_scores, n_lines=N_LINES):
         terminalreporter.write_line(line)
