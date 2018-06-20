@@ -67,7 +67,7 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
             for line in try_get_line(line_no)
         )
 
-        out_buffer_key = '\u001b[1m{}\u001b[0m'.format(os.path.relpath(fname, os.getcwd()))
+        out_buffer_key = '\x1b[1m{}\x1b[0m'.format(os.path.relpath(fname, os.getcwd()))
         for line in output_lines:
             out_buffer[out_buffer_key].add(line)
 
