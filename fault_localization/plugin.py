@@ -17,14 +17,14 @@ N_LINES = 1
 def pytest_addoption(parser):
     group = parser.getgroup('fault-localization', 'fault localization')
     group.addoption('--localize', help="directory in which to localize faults")
-    group.addoption('--n-top-lines', type=int, default=1, help="number of top-ranking lines to display")
+    group.addoption('--n-hotspots', type=int, default=1, help="number of top-ranking lines to display")
 
 
 def pytest_configure(config):
     global LOCALIZATION_DIR
     global N_LINES
     LOCALIZATION_DIR = config.getoption('--localize')
-    N_LINES = config.getoption('--n-top-lines')
+    N_LINES = config.getoption('--n-hotspots')
 
 
 @pytest.hookimpl(hookwrapper=True)
