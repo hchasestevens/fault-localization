@@ -25,10 +25,13 @@ pip install fault-localization
 With `fault-localization` installed, running
 
 ```bash
-pytest --localize {dir} [pytest args]
+pytest --localize {dir} [--n-hotspots {n}] [pytest args ...]
 ```
 
 will highlight suspicious lines encountered within `dir` while running the test configuration specified.
+`--n-hotspots` can optionally be provided to show the top `n` most suspicious lines (only one line, with surrounding context,
+is shown by default).
+
 If you suspect multiple sources of failure, or if there are multiple tests within your suite that 
 exercise the area of code you're interested in, using [pytest's `-k` flag](https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests) is useful for running 
 fault localization on only a subset of your suite.
