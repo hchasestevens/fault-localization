@@ -49,7 +49,7 @@ def generate_output(line_scores, line_context=LINE_CONTEXT, n_lines=1):
 
         def try_get_line(line_no):
             try:
-                yield file_contents[line_no]
+                yield file_contents[line_no - 1]
             except IndexError:
                 return
 
